@@ -21,3 +21,24 @@ class ExpenseAdmin(admin.ModelAdmin):
     search_fields = ("description",)           # search box for descriptions
     date_hierarchy = "date"                    # date navigation at top
     ordering = ("-date",)                      # newest first
+
+##Step 2: What This Does in Admin
+
+#    CategoryAdmin
+
+#   You can search categories by name.
+
+#  Sorted alphabetically.
+#   Columns shown: ID and name.
+
+#   ExpenseAdmin
+
+#   Shows ID, category, amount, description, date.
+
+#   Filter by category or date.
+
+#   Search expenses by description.
+
+#   Date hierarchy at top (click months/years).
+
+#   Ordered with newest expense first.
