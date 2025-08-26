@@ -127,4 +127,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ]
+    
+}
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'expenses.exceptions.custom_exception_handler',
 }
