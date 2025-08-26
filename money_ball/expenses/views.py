@@ -13,6 +13,7 @@ def home(request):
     return HttpResponse("Welcome to Xtracker 🚀")
 
 
+
 # for permissions
 class ExpenseListCreateView(generics.ListCreateAPIView):
     queryset = Expense.objects.all()
@@ -28,6 +29,8 @@ class ExpenseListCreateView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+
 
 class ExpenseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Expense.objects.all()
