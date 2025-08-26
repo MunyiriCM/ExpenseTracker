@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'expenses',
     "rest_framework",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +133,13 @@ REST_FRAMEWORK = {
 
 REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'expenses.exceptions.custom_exception_handler',
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+    ]
 }
