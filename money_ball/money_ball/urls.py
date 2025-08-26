@@ -29,13 +29,18 @@ from rest_framework_simplejwt.views import (
 #]
 
 urlpatterns = [
+    path('', home, name='home'),  # 👈 add this
     path('admin/', admin.site.urls),
-    path('api/', include('expenses.urls')),
-
+    #path('api/', include('expenses.urls')),
+     path('api/', include('api.urls')),  # your app urls
     # Token Authentication (basic)
     path('api/token-auth/', obtain_auth_token, name='api_token_auth'),
 
     # JWT Authentication
     path('api/jwt/', TokenObtainPairView.as_view(), name='jwt_obtain_pair'),
     path('api/jwt/refresh/', TokenRefreshView.as_view(), name='jwt_refresh'),
+
+    #The added last lines of code to prevent a 404 error
+    path('api/token-auth/', include('rest_framework.urls')),  # browsable API login
+    path('api/jwt/', include('rest_framework_simplejwt.urls')),  # JWT
 ]
