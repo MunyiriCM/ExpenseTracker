@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from expenses.views import home
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 #urlpatterns = [
 #   path("admin/", admin.site.urls),
@@ -25,5 +30,12 @@ from expenses.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('expenses.urls')),  # ✅ include expenses app
+    path('api/', include('expenses.urls')),
+
+    # Token Authentication (basic)
+    path('api/token-auth/', obtain_auth_token, name='api_token_auth'),
+
+    # JWT Authentication
+    path('api/jwt/', TokenObtainPairView.as_view(), name='jwt_obtain_pair'),
+    path('api/jwt/refresh/', TokenRefreshView.as_view(), name='jwt_refresh'),
 ]
